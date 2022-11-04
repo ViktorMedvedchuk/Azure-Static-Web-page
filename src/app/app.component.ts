@@ -3,28 +3,33 @@ import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
-  template: `<div>Hello {{value}} to Setbuilder</div>`,
+  template: `<div>Hello {{value}} to Setbuilder</div>
+  <button (click)="refresh()">refresh</button>
+  `,
 })
 export class AppComponent {
   value = 'New';
   constructor(private http: HttpClient) {
-    setTimeout(() => {
-      this.getData().subscribe(
-        data => {
-          this.value = JSON.stringify(data)
-        }
-      )
-    }, 2000);
 
   }
 
   getData() {
     const url = "https://dad-jokes.p.rapidapi.com/random/joke"
     const options: any = {
-      'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',
+      'X-RapidAPI-Key': '6c495f4dccmsh2b1ab68060588d4p1919e1jsn5bc3533d1536',
       'X-RapidAPI-Host': 'dad-jokes.p.rapidapi.com'
     }
     return this.http.get(url, options)
+  }
+
+  refresh() {
+    setTimeout(() => {
+      this.getData().subscribe(
+        data => {
+          this.value = JSON.stringify(data)
+        }
+      )
+    }, 1000);
   }
 
 
