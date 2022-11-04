@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
   template: `<div>Hello {{value}} to Setbuilder</div>`,
 })
 export class AppComponent {
-  value = 'World';
+  value = 'New';
 }
