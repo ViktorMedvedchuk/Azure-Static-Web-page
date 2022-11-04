@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
-  template: `<div>Hello {{value}} to Setbuilder</div>
+  template: `<pre>Hello {{value }} to Setbuilder</pre>
   <button (click)="refresh()">refresh</button>
   `,
 })
@@ -15,9 +15,11 @@ export class AppComponent {
 
   getData() {
     const url = "https://dad-jokes.p.rapidapi.com/random/joke"
-    const options: any = {
-      'X-RapidAPI-Key': '6c495f4dccmsh2b1ab68060588d4p1919e1jsn5bc3533d1536',
-      'X-RapidAPI-Host': 'dad-jokes.p.rapidapi.com'
+    const options = {
+      headers: {
+        'X-RapidAPI-Key': '6c495f4dccmsh2b1ab68060588d4p1919e1jsn5bc3533d1536',
+        'X-RapidAPI-Host': 'dad-jokes.p.rapidapi.com'
+      }
     }
     return this.http.get(url, options)
   }
